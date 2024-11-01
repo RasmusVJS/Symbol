@@ -1,0 +1,71 @@
+import dk.cphbusiness.dat2024.brickfactory.Brick;
+import dk.cphbusiness.dat2024.brickfactory.BrickFactory;
+
+public class Symbol implements ModelDesign
+{
+    @Override
+    public Model designModel(ModelBuildTool buildTool, BrickFactory brickFactory)
+    {
+        Brick l3x3 = brickFactory.createLBrick(3, 3, 1, 1);
+        Brick u6x3 = brickFactory.createUBrick(6, 3, 1, 1);
+        Brick basic4x1 = brickFactory.createBasicBrick(4,1,1);
+        Brick l2x2 = brickFactory.createLBrick(2, 2, 1, 1);
+        Brick o6x6 = brickFactory.createOBrick(6, 6, 1, 1);
+        Brick corner0 = l3x3;
+        buildTool.placeBrick(corner0);
+        Brick corner1 = buildTool.rotate(1, l3x3);
+        corner1 = buildTool.translateY(11, corner1);
+        buildTool.placeBrick(corner1);
+        Brick corner2 = buildTool.rotate(2, l3x3);
+        corner2 = buildTool.translate(11, 11, 0, corner2);
+        buildTool.placeBrick(corner2);
+        Brick corner3 = buildTool.rotate(3, l3x3);
+        corner3 = buildTool.translateX(11, corner3);
+        buildTool.placeBrick(corner3);
+        Brick mid0 = buildTool.translate(3, 0, 0, u6x3);
+        buildTool.placeBrick(mid0);
+        Brick mid1 = buildTool.rotate(1, u6x3);
+        mid1 = buildTool.translateY(9, mid1);
+        buildTool.placeBrick(mid1);
+        Brick mid2 = buildTool.rotate(2, u6x3);
+        mid2 = buildTool.translate(9, 11, 0, mid2);
+        buildTool.placeBrick(mid2);
+        Brick mid3 = buildTool.rotate(3, u6x3);
+        mid3 = buildTool.translate(11, 3, 0, mid3);
+        buildTool.placeBrick(mid3);
+        Brick connector0 = buildTool.translate(1,0,1,basic4x1);
+        buildTool.placeBrick(connector0);
+        Brick connector1 = buildTool.translate(7,0,1,basic4x1);
+        buildTool.placeBrick(connector1);
+        Brick connector2 = buildTool.translate(1,11,1,basic4x1);
+        buildTool.placeBrick(connector2);
+        Brick connector3 = buildTool.translate(7,11,1,basic4x1);
+        buildTool.placeBrick(connector3);
+        Brick connector4 = buildTool.rotate(1, basic4x1);
+        connector4 = buildTool.translate(0,10,1,basic4x1);
+        buildTool.placeBrick(connector4);
+        Brick connector5 = buildTool.rotate(1, basic4x1);
+        connector5 = buildTool.translate(0,4,1,basic4x1);
+        buildTool.placeBrick(connector5);
+        Brick connector6 = buildTool.rotate(1, basic4x1);
+        connector6 = buildTool.translate(11,10,1,basic4x1);
+        buildTool.placeBrick(connector6);
+        Brick connector7 = buildTool.rotate(1, basic4x1);
+        connector7 = buildTool.translate(11,4,1,basic4x1);
+        buildTool.placeBrick(connector7);
+        Brick bridge0 = buildTool.translate(8,8,1,l2x2);
+        buildTool.placeBrick(bridge0);
+        Brick bridge1 = buildTool.rotate(1, l2x2);
+        bridge1 = buildTool.translate(3,8,1,l2x2);
+        buildTool.placeBrick(bridge1);
+        Brick bridge2 = buildTool.rotate(2, l2x2);
+        bridge2 = buildTool.translate(8,8,1,l2x2);
+        buildTool.placeBrick(bridge2);
+        Brick bridge3 = buildTool.rotate(3, l2x2);
+        bridge3 = buildTool.translate(8,3,1,l2x2);
+        buildTool.placeBrick(bridge3);
+        Brick center = buildTool.translate(3,3,2,o6x6);
+        buildTool.placeBrick(center);
+        return buildTool.getModel();
+    }
+}
